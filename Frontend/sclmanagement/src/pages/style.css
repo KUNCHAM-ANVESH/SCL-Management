@@ -1,0 +1,43 @@
+@keyframes blink {
+  0%, 100% {
+    opacity: 1;
+    filter: drop-shadow(0 0 6px white);
+  }
+  50% {
+    opacity: 0.2;
+    filter: drop-shadow(0 0 0 white);
+  }
+}
+
+.blink {
+  animation: blink 1.5s infinite ease-in-out;
+}
+
+
+.link-hover-underline {
+  position: relative;
+  color: white;            /* default text color */
+  text-decoration: none;    /* remove default underline */
+  transition: color 0.3s;  /* smooth color transition */
+  padding-bottom: 2px;      /* small space for underline */
+}
+
+.link-hover-underline:hover {
+  color: #d1d1d1;           /* text color on hover */
+}
+
+/* The underline */
+.link-hover-underline::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 2px;               /* thickness of underline */
+  background-color: white;   /* underline color */
+  transition: width 0.3s ease;
+}
+
+.link-hover-underline:hover::after {
+  width: 100%;               /* expands underline on hover */
+}
