@@ -5,7 +5,7 @@ import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
 import Header from "./pages/Header";
 import ProtectedRoute from "./routes/ProtectedRoute";
-import { AuthProvider } from "./context/AuthContext";
+import  AuthProvider  from "./context/AuthProvider";
 import PublicRoute from "./routes/PublicRoute";
 import ProfilePage from "./pages/ProfilePage";
 

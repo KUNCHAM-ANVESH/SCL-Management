@@ -33,15 +33,16 @@ const LoginPage = () => {
     if (Object.keys(validationErrors).length === 0) {
       try {
         const response = await loginUser(formData);
-        if (response.data.status === 200) {
-          const token = response.data.token;
+        const ok = response.status === 200 || (response.data && response.data.status === 200);
+        if (ok) {
+          const token = response.data?.token ?? null;
           setsuccesPopup(true);
           setTimeout(() => {
             setsuccesPopup(false);
-            login(token);
+            if (token) login(token);
             handleClear();
           }, 2000);
-          handleClear();  
+          handleClear();
         }
       } catch (error) {
         console.error("Login Error:", error);

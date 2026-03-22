@@ -14,7 +14,7 @@ const useRegister = (formData, triggerSubmit) => {
       setLoading(true);
       try {
         const response = await registerUser(formData);
-        if (response.status === 201) {
+        if ( response.status === 200 || (response.data && response.data.status === 200) ) {
           setMsg("Registered Successfully!");
           setSuccess(true);
         }
