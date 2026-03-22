@@ -7,7 +7,7 @@ import "./style.css";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const { user, logout } = useAuth(); 
+  const { token, logout } = useAuth();
   const location = useLocation();
 
   if (location.pathname === "/login" || location.pathname==="/register") return null;
@@ -24,13 +24,13 @@ const Header = () => {
         <nav className="hidden md:flex space-x-6 text-[18px]">
           <Link to="/" className="link-hover-underline">Home</Link>
           <Link to="/contact" className="link-hover-underline">Contact Us</Link>
-          {user?.loggedIn ? (
+          <Link to="/about" className="link-hover-underline">About Us</Link>
+          <Link to="/services" className="link-hover-underline">Services</Link>
+           {token ? (
             <button onClick={logout} className="link-hover-underline">Logout</button>
           ) : (
             <Link to="/login" className="link-hover-underline">Login</Link>
           )}
-          <Link to="/about" className="link-hover-underline">About Us</Link>
-          <Link to="/services" className="link-hover-underline">Services</Link>
         </nav>
 
         {/* Mobile Menu Button */}
@@ -42,15 +42,15 @@ const Header = () => {
       {/* Mobile Dropdown Menu */}
       {isOpen && (
         <nav className="md:hidden bg-[#FF5500] px-4 pb-4 space-y-2  itmes-center">
-          <Link to="/home" className="block hover:text-gray-200">Home</Link>
+          <Link to="/" className="block hover:text-gray-200">Home</Link>
           <Link to="/contact" className="block hover:text-gray-200">Contact Us</Link>
-          {user?.loggedIn ? (
+          <Link to="/about" className="block hover:text-gray-200">About Us</Link>
+          <Link to="/services" className="block hover:text-gray-200">Services</Link>
+           {token ? (
             <button onClick={logout} className="block hover:text-gray-200 w-full text-left">Logout</button>
           ) : (
             <Link to="/login" className="block hover:text-gray-200">Login</Link>
           )}
-          <Link to="/about" className="block hover:text-gray-200">About Us</Link>
-          <Link to="/services" className="block hover:text-gray-200">Services</Link>
         </nav>
       )}
     </header>
