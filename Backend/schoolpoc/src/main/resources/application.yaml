@@ -1,3 +1,10 @@
 spring:
   application:
-    name: schoolpoc
+    name: schoolApplication
+
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/schooDB
+
+server:
+  port: 8080
